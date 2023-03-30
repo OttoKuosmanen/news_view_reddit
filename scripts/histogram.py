@@ -81,7 +81,7 @@ axes[0].hist(title_valence, bins=8, color='cyan', edgecolor='black')
 axes[1].hist(comment_valence,bins=9, color='darkorange', edgecolor='black')
 
 # add labels and title to each subplot
-fig.text(-0.05, 0.5, 'Frequency', ha='center', va='center', rotation='vertical', fontsize=15)
+fig.text(0.05, 0.5, 'Frequency', ha='center', va='center', rotation='vertical', fontsize=15)
 axes[0].set_title('News Titles', fontsize=16, fontweight='bold', color='cyan')
 axes[1].set_xlabel('Valence of text' , fontsize=15)
 axes[1].set_title('Comment Section', fontsize=16, fontweight='bold', color='darkorange')
