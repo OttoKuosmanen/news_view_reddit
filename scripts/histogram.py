@@ -12,7 +12,7 @@ import json
 from scipy.stats import spearmanr
 
 # State file location/name
-relative_location_name = '../data/news_data_test.json'
+relative_location_name = '../data/news_data_file.json'
 
 #Function: Reads in the json file
 #Parameter: Pass in the file location/name
