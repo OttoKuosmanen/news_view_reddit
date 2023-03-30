@@ -76,9 +76,13 @@ axes[1].tick_params(axis='x', pad=10)
 # specifying the bin's
 bins=[-1,-0.9,-0.8,-0.7,-0.6,-0.5,-0.4,-0.3,-0.2,-0.1,0,0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8,0.9,1]
 
+bins = np.linspace(-1, 1, num = 10)
+#bins= np.arange(-1.05,1.05, 0.2)
+#bins = [-0.1]
+
 # plot data on each subplot
-axes[0].hist(title_valence, bins=8, color='cyan', edgecolor='black')
-axes[1].hist(comment_valence,bins=9, color='darkorange', edgecolor='black')
+axes[0].hist(title_valence, bins=bins, color='cyan', edgecolor='black')
+axes[1].hist(comment_valence,bins=bins, color='darkorange', edgecolor='black')
 
 # add labels and title to each subplot
 fig.text(0.05, 0.5, 'Frequency', ha='center', va='center', rotation='vertical', fontsize=15)
@@ -87,6 +91,8 @@ axes[1].set_xlabel('Valence of text' , fontsize=15)
 axes[1].set_title('Comment Section', fontsize=16, fontweight='bold', color='darkorange')
 axes[0].set_xlim((-1,1))
 axes[1].set_xlim((-1,1))
+axes[0].set_xticks((-1,-0.5,0,0.5,1))
+axes[1].set_xticks((-1,-0.5,0,0.5,1))
 axes[1].axvline(mean_comment, color='gold', label='Mean comment valence')
 axes[0].axvline(mean_title, color='gold',label='Mean title valence')
 axes[1].axvline(median_comment, color='gold', linestyle='dashed', label='Median comment valence')

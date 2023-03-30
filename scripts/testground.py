@@ -47,23 +47,45 @@ max_comment = np.max(comment_valence)
 min_title = np.min(title_valence)
 max_title = np.max(title_valence)
 
-
+"""
 
 #plotting
-fig, axs = plt.subplots(2,figsize=(8, 8))
+fig, axs = plt.subplots(2,figsize=(6, 8))
 
 axs[0].set_xlabel("News Title Valence")
 axs[1].set_xlabel("Comment Section Valence")
 
-axs[0].set_ylabel("Frequency")
-axs[1].set_ylabel("Frequency")
+axs[0].set_ylabel("score")
+axs[1].set_ylabel("score")
 
 bins = np.linspace(-1, 1, num=20)
 
-axs[0].hist(title_valence, edgecolor="white", linewidth=1, bins=bins)
-axs[1].hist(comment_valence, edgecolor="white", linewidth=1, bins=bins)
+axs[0].scatter(title_valence, votes)
+axs[1].scatter(comment_valence, votes)
 
-fig.suptitle("Distribution of Valence")
+fig.suptitle("Valence and score")
+axs[0].set_xlim((-1,1))
+axs[1].set_xlim((-1,1))
+
+plt.subplots_adjust(hspace=0.4)
+plt.show()
+"""
+
+votes = np.multiply(votes, 0.1)
+fig, axs = plt.subplots(2,figsize=(6, 8))
+
+axs[0].set_xlabel("Comment valence")
+axs[1].set_xlabel("Comment Valence")
+
+axs[0].set_ylabel("Title valence")
+axs[1].set_ylabel("score")
+
+bins = np.linspace(-1, 1, num=20)
+
+axs[0].scatter(comment_valence, title_valence, s=votes)
+axs[1].scatter(comment_valence, votes)
+
+fig.suptitle("Valence and vote rating")
 axs[0].set_xlim((-1,1))
 axs[1].set_xlim((-1,1))
 
