@@ -14,7 +14,7 @@ reddit = praw.Reddit(client_id = client_id,
 
 # Initialize parameters for search
 sub_reddit = "worldnews"
-number_of_posts = 10
+number_of_posts = 1000
 score_limit = 0
 
 
@@ -57,8 +57,10 @@ def simplify_comments(comments):
     for comment in comments:
         comment_list = []
         for i in comment._comments:
-            if i.author_flair_text != 'BOT':
-                comment_list.append(i.body)
+            text = i.body
+            bot = "I am a bot" in text
+            if i.author_flair_text != 'BOT' and bot == False:
+                comment_list.append(text)
         comment_list_list.append(comment_list)
     return comment_list_list
             
@@ -76,8 +78,11 @@ def sentiment(headlines, listing):
 
     for comment_list in listing:
         textdump = str(comment_list)
-        feel = sia.polarity_scores(textdump)
-        comment_valence.append(feel) 
+        if len(textdump) != 2: # If there are no comments in the list the lenght will be 2 because of the square brackets.
+             feel = sia.polarity_scores(textdump)
+             comment_valence.append(feel)
+        else: # If there was no comments on the post the post is marked for deletion (In the gather function)
+            comment_valence.append("DELETE")
         
     return title_valence, comment_valence
 
@@ -88,12 +93,13 @@ def sentiment(headlines, listing):
 def gather(headlines, votes, title_valence, comment_valence):
     lizz = []
     for head,vote,t_val,c_val in zip(headlines, votes, title_valence, comment_valence):
-        data = {}
-        data['headline'] = head
-        data['votes'] = vote
-        data['title_valence'] = t_val
-        data['comment_valence'] = c_val
-        lizz.append(data)
+        if c_val != "DELETE":
+            data = {}
+            data['headline'] = head
+            data['votes'] = vote
+            data['title_valence'] = t_val
+            data['comment_valence'] = c_val
+            lizz.append(data)
     return lizz
 
 #Function: Saves a dictionary into a json file in the data folder.
