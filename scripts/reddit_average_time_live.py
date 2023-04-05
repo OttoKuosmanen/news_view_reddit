@@ -1,6 +1,8 @@
 import praw
 import numpy as np
-from key_otto import client_id, client_secret, password, user_agent, username # change to key
+import sys
+sys.path.append('../KEY')
+from key import client_id, client_secret, password, user_agent, username
 
 # Getting access to reddit
 reddit = praw.Reddit(client_id = client_id,

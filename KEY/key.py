@@ -1,6 +1,6 @@
 # Authorization guide
 
-# https://www.reddit.com/prefs/apps :Go here and creat an application
+# https://www.reddit.com/prefs/apps :Go here and create an application
 # You will get a client secret and and client id. ^ copy the strings into the variables below.
  
 # Set variables with your reddit username and password
@@ -11,7 +11,6 @@ client_secret=''
 password=''
 username=''
 user_agent='ExampleApp/0.1 by Otto_kuosmanen' # Change this. Follow the format.
-
 
 
 

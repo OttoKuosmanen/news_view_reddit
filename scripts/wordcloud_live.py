@@ -3,8 +3,11 @@ from wordcloud import WordCloud, STOPWORDS
 import matplotlib.pyplot as plt
 import PIL.Image
 import numpy as np
-from key_otto import client_id, client_secret, password, user_agent, username # change to key
+import sys
+sys.path.append('../KEY')
+from key import client_id, client_secret, password, user_agent, username
 
+# gain access to reddit
 reddit = praw.Reddit(client_id = client_id,
                      client_secret = client_secret, password = password,
                      user_agent = user_agent, username = username)
@@ -12,11 +15,12 @@ reddit = praw.Reddit(client_id = client_id,
 # Initialize parameters for search
 sub_reddit = "worldnews"
 number_of_posts = 100
-score_limit = 2
+score_limit = 0
 
 # Function for requesting the titles from a subreddit. Returns them as a list.
 # Parameters: 
 #   sub = "subreddit", limitter = how many posts to is considered in the search, score_limit = minimum score for post to be included.
+# Return: list of submission titles
 def get_sub(sub, limitter, score_limit):
     submission_titles = []
     for submission in reddit.subreddit(sub).new(limit=limitter):
@@ -31,7 +35,7 @@ titles = get_sub(sub_reddit,number_of_posts,score_limit)
 cloud = str(titles)
 
 # Setting a mask image
-mask = np.array(PIL.Image.open("map.jpg"))
+mask = np.array(PIL.Image.open("../IMG/map.jpg"))
 mask[mask == 0] = 10 
 
 stopwords = set(STOPWORDS)

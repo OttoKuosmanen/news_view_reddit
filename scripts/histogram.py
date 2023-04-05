@@ -1,15 +1,7 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Mon Mar 27 17:55:49 2023
-
-@author: Otto
-"""
-
-import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 import json
-from scipy.stats import spearmanr
+
 
 # State file location/name
 relative_location_name = '../data/news_data_file.json'
@@ -22,14 +14,7 @@ def read(relative_location_name):
         out = json.load(f)
         return out
 
-#Function: Calculates the number of entries items in a list
-#Parameter: Give a list
-#Return: A list of numbers [1,2,3,4,5,etc] as a function of items in the list    
-def number_titles(titles):
-    numb = []
-    for i, x in enumerate(titles):
-        numb.append(i+1)
-    return numb
+
 
 # Reading in the data with read function
 data = read(relative_location_name)
@@ -56,11 +41,8 @@ max_title = np.max(title_valence)
 std_votes = np.std(votes)
 min_votes = np.min(votes)
 
-x = np.array(title_valence)
-y = np.array(comment_valence)
 
-print(mean_votes)
-print(min_votes)
+
 
 #plot style
 plt.style.use('dark_background')
@@ -69,16 +51,12 @@ plt.style.use('dark_background')
 fig, axes = plt.subplots(nrows=2, ncols=1,figsize=(9, 6))
 
 # add some space between subplots
-fig.subplots_adjust(hspace=0.3)
+fig.subplots_adjust(hspace=0.5)
 axes[0].tick_params(axis='x', pad=10)
 axes[1].tick_params(axis='x', pad=10)
 
-# specifying the bin's
-bins=[-1,-0.9,-0.8,-0.7,-0.6,-0.5,-0.4,-0.3,-0.2,-0.1,0,0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8,0.9,1]
-
+# Create bins
 bins = np.linspace(-1, 1, num = 10)
-#bins= np.arange(-1.05,1.05, 0.2)
-#bins = [-0.1]
 
 # plot data on each subplot
 axes[0].hist(title_valence, bins=bins, color='cyan', edgecolor='black')

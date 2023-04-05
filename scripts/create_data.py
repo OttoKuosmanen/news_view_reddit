@@ -5,7 +5,9 @@ nltk.download('vader_lexicon')
 from nltk.sentiment.vader import SentimentIntensityAnalyzer as SIA
 sns.set(style='darkgrid', context='talk', palette='Dark2')
 import json
-from key_otto import client_id, client_secret, password, user_agent, username # change to key
+import sys
+sys.path.append('../KEY')
+from key import client_id, client_secret, password, user_agent, username # Add access information before use
 
 # Get access
 reddit = praw.Reddit(client_id = client_id,
@@ -14,7 +16,7 @@ reddit = praw.Reddit(client_id = client_id,
 
 # Initialize parameters for search
 sub_reddit = "worldnews"
-number_of_posts = 1000
+number_of_posts = 10
 score_limit = 0
 
 
@@ -105,7 +107,7 @@ def gather(headlines, votes, title_valence, comment_valence):
 #Function: Saves a dictionary into a json file in the data folder.
 #Parameters: Pass in the file you want to save 
 def save(data):
-    with open('../data/news_data_test.json', 'w') as f:
+    with open('../data/news_data_new.json', 'w') as f:
         json.dump(data, f, indent = 4)
         
                 
