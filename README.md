@@ -23,11 +23,11 @@ Contribute: send message to: https://github.com/Keijumies
 	wordclouds_live.py : 	Get data form reddit and visualize the titles of the posts with the WorldCloud library.
                 	
 	
-	create_data.py: 	Create your own data file.  
+	create_data.py: 	Create your own data file. Get data from a subreddit of your choice. 
                 		Perform a simple language analysis on both title and comments. 
                 		(Valence scores: negative, postitive, compound) [Compound is used for later analysis as it is a cumulative valence score]
                 		Saves an json file with, rating on posts, valence scores and the headline.
-                		save location is the data folder, format is JSON
+                		save location is the data folder, format is JSON.
 
 	histogram: 		Performs a simple analysis on a data file. Outputs a histogram of the valence scores on titles and comments.
 	
