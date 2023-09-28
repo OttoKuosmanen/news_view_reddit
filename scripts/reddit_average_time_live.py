@@ -10,7 +10,7 @@ reddit = praw.Reddit(client_id = client_id,
                      user_agent = user_agent, username = username)
 
 # Initialize parameters for search
-sub_reddit = "worldnews"
+sub_reddit = "advice"
 number_of_posts = 1000
 score_limit = 0
 
