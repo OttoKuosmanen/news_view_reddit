@@ -1,39 +1,44 @@
-This directory includes a simple reddit data extraction with basic language analysis (VADER: VALENCE) and some basic templates for data visualization.
-Additionally you will find a datafile that is ready for analysis in the DATA folder (worldnews: 1000 posts. 27.3.2023).
+# Reddit Data Extraction and Basic Language Analysis
 
-Author: Otto Kuosmanen
-Data source: https://www.reddit.com 
-	     subreddit: "worldnews" (Subreddit can be changed)
- 
-Contribute: send message to: https://github.com/Keijumies
+This directory provides tools for extracting data from Reddit, performing basic language analysis using VADER (Valence Aware Dictionary and sEntiment Reasoner), and visualizing the data. The package includes a ready-to-analyze data file from the "worldnews" subreddit as of March 27, 2023.
 
-#############################################################################################################################################################################
-								##IMPORTANT##
-	There is one important thing to note before starting. Some of the scripts require that you have your own access key. This can easily be done from the reddit website.
-	For more information on this navigate to the KEY folder and open the script. (You will need a reddit account)
+**Author:** Otto Kuosmanen  
+**Data Source:** [Reddit](https://www.reddit.com)  
+**Subreddit:** "worldnews" (modifiable)  
+**Contribute:** [GitHub](https://github.com/Keijumies)
 
-	Some of the scripts can be run with the default datafile. [wordclouds, histogram, emo_scatter]
-	If you want to make your own datafiles and have access to live analysis follow the steps found in the KEY folder.
-#############################################################################################################################################################################
-	______SCRIPTS_______
+---
 
-	wordclouds.py : 	Visualize the titles of the posts in the data file with the WorldCloud library.
-                	
+### **Important Note**
 
-	wordclouds_live.py : 	Get data form reddit and visualize the titles of the posts with the WorldCloud library.
-                	
-	
-	create_data.py: 	Create your own data file. Get data from a subreddit of your choice. 
-                		Perform a simple language analysis on both title and comments. 
-                		(Valence scores: negative, postitive, compound) [Compound is used for later analysis as it is a cumulative valence score]
-                		Saves an json file with, rating on posts, valence scores and the headline.
-                		save location is the data folder, format is JSON.
+Before starting, it is essential to understand that some scripts require your own Reddit access key. This can be obtained through the Reddit website. For more information, refer to the KEY folder's script. A Reddit account is necessary for this step.
 
-	histogram: 		Performs a simple analysis on a data file. Outputs a histogram of the valence scores on titles and comments.
-	
-	emo_scatter: 		A script for making a scatterplot that shows the emotionality of the comment section and the rating of a post.
+Certain scripts can be executed with the default data file, including word clouds, histograms, and emotion scatter plots. To conduct live analysis or create your own data files, follow the instructions found in the KEY folder.
 
+---
 
-	reddit_average_time_live: 	A simple function that gives you the average time between posts in a subreddit of your choosing.
+## Scripts
 
-################################################################################################################################################## 
+### Visualization
+
+- **wordclouds.py**: Visualizes the post titles in the data file using the WordCloud library.
+
+- **wordclouds_live.py**: Fetches data from Reddit and visualizes post titles with the WordCloud library.
+
+### Data Creation
+
+- **create_data.py**: Generates a custom data file by fetching data from a chosen subreddit. Performs basic language analysis on titles and comments, calculating valence scores (negative, positive, compound). The compound score is utilized for further analysis as it aggregates valence scores. The data is saved in JSON format in the data folder.
+
+### Analysis
+
+- **histogram**: Analyzes a data file and produces a histogram of the valence scores for titles and comments.
+
+- **emo_scatter**: Creates a scatter plot illustrating the emotionality of comments and the post rating.
+
+- **reddit_average_time_live**: Calculates the average time between posts in a selected subreddit.
+
+---
+
+### Data File
+
+Located in the DATA folder, the file contains 1000 posts from the "worldnews" subreddit, dated March 27, 2023, ready for analysis.
