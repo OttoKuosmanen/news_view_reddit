@@ -1,0 +1,9 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+title: "Reddit Data Extraction and Basic Language Analysis"
+version: 1.0.0
+date-released: 2024-04-30
+authors:
+  - family-names: Kuosmanen
+    given-names: Otto Juhani Benjamin
+url: "https://github.com/OttoKuosmanen/news_view_reddit"
